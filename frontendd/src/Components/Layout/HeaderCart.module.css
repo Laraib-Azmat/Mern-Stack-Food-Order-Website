@@ -1,0 +1,85 @@
+.cartBtn{
+    cursor: pointer;
+    font: inherit;
+    border: none;
+    background-color: #4d1601;
+    color: white;
+    padding: 0.75rem 3rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 25px;
+    font-weight: bold;
+    margin: 0rem 1rem;
+}
+
+.cartBtn:hover , .cartBtn:active{
+    background-color: #2c0d00;
+}
+
+.badge {
+    background-color: #b94517;
+    padding: 0.25rem 1rem;
+    border-radius: 25px;
+    margin-left: 1rem;
+    font-weight: bold;
+  }
+
+.cartBtn:hover .badge,
+.cartBtn:active .badge {
+  background-color: #92320c;
+}
+
+.cartIcon{
+  font-size: inherit;
+  margin-right: 0.5rem;
+  --fa-animation-duration: 2s
+}
+
+.bump {
+  animation: bump 300ms ease-out;
+}
+
+@keyframes bump {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.9);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media(max-width:900px){
+    .cartBtn{
+      padding: 0.4rem 1.5rem;
+      font-size: 12px;
+    }
+    .badge {
+      padding: 0.2rem 0.5rem;
+      margin-left: 0.7rem;
+    }
+   
+}
+
+@media(max-width:400px){
+  .cartBtn{
+    font: 11px;
+    padding: 0.3rem 1rem;
+    margin: 0rem 0.5rem;
+}
+
+.badge {
+  padding: 0rem 0.3rem;
+  margin-left: 0.5rem;
+}
+
+}
