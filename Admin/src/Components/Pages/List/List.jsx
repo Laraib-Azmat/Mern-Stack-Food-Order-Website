@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons'
 import './List.css'
 
+
 const List = ({url}) => {
 
     const [list, setList] = useState([]);
@@ -34,6 +35,17 @@ const List = ({url}) => {
    }
     }
 
+    const changeAvailable = async (id,available)=>{
+
+       const response =  await axios.post(url+"/api/food/update", {id,status:!available})
+        if(response.data.success){
+            toast.success(response.data.message)
+            await fetchList();
+        }else{
+            toast.error(response.data.message)
+        }
+    }
+
   return (
     <div className='list add flex-col'>
         <p>All Food List</p>
@@ -45,6 +57,7 @@ const List = ({url}) => {
                 <b>Category</b>
                 <b>Price</b>
                 <b>Action</b>
+                <b>Available</b>
             </div>
             {list.map((item,i)=>{
                 return(
@@ -54,6 +67,7 @@ const List = ({url}) => {
                         <p>{item.category}</p>
                         <p>${item.price}</p>
                         <p onClick={()=>removeFood(item._id)} className='delete-icon'><FontAwesomeIcon icon={faDeleteLeft} /></p>
+                        <input type='checkbox' onChange={()=>changeAvailable(item._id,item.available)} checked={item.available} />
                     </div>
                 )
             })}

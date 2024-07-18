@@ -50,4 +50,17 @@ const removeFood = async (req,res)=>{
     }
 }
 
-export {addFood, listFood, removeFood};
+//change availablity
+const available = async (req,res)=>{
+    try{
+
+        await foodModel.findByIdAndUpdate(req.body.id,{available:req.body.status})
+        res.json({success:true, message:"Availability updated!"})
+
+    }catch(error){
+        console.log(error)
+        res.json({success:false, message:"Error while updating status"})
+    }
+}
+
+export {addFood, listFood, removeFood,available};
